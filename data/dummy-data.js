@@ -4,7 +4,7 @@ const PRODUCTS = [
   new Product(
     "p1",
     "u1",
-    "Tomat",
+    "Tomat Segar",
     // "https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg",
     "https://cdn.pixabay.com/photo/2011/03/16/16/01/tomatoes-5356_1280.jpg",
     "A red t-shirt, perfect for days with non-red weather.",
