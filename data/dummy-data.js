@@ -4,7 +4,7 @@ const PRODUCTS = [
   new Product(
     "p1",
     "u1",
-    "Tomat Segar",
+    "Tomat",
     // "https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg",
     "https://cdn.pixabay.com/photo/2011/03/16/16/01/tomatoes-5356_1280.jpg",
     "A red t-shirt, perfect for days with non-red weather.",
@@ -26,7 +26,7 @@ const PRODUCTS = [
     "https://cdn.pixabay.com/photo/2018/04/29/18/42/pumpkin-3360793_1280.jpg",
     // "https://images.pexels.com/photos/160834/coffee-cup-and-saucer-black-coffee-loose-coffee-beans-160834.jpeg?cs=srgb&dl=bean-beans-black-coffee-160834.jpg&fm=jpg",
     "Can also be used for tea!",
-    2.5
+    2500
   ),
   new Product(
     "p4",

@@ -5,37 +5,49 @@ import {
   Image,
   StyleSheet,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  Platform
 } from "react-native";
 
 import Color from "../../constans/Color";
 
 const ProductItem = props => {
-  return (
-    <TouchableOpacity onPress={props.onAddToCart}>
-      <View style={styles.product}>
-        <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{ uri: props.image }} />
-        </View>
-        <View style={styles.details}>
-          <Text style={styles.title}> {props.title} </Text>
-          <Text style={styles.price}> Rp. {props.price} </Text>
-        </View>
+  let TouchableCmp = TouchableOpacity;
 
-        <View style={styles.actions}>
-          <Button
-            color={Color.primary}
-            title="View Details"
-            onPress={props.onViewDetail}
-          />
-          <Button
-            color={Color.primary}
-            title="To Cart"
-            onPress={props.onAddToCart}
-          />
-        </View>
+  if (Platform.OS === "android" && Platform.Version >= 21) {
+    TouchableCmp = TouchableNativeFeedback;
+  }
+
+  return (
+    <View style={styles.product}>
+      <View style={styles.touchable}>
+        <TouchableCmp onPress={props.onViewDetail} useForeground>
+          <View>
+            <View style={styles.imageContainer}>
+              <Image style={styles.image} source={{ uri: props.image }} />
+            </View>
+            <View style={styles.details}>
+              <Text style={styles.title}> {props.title} </Text>
+              <Text style={styles.price}> Rp. {props.price} </Text>
+            </View>
+
+            <View style={styles.actions}>
+              <Button
+                color={Color.primary}
+                title="View Details"
+                onPress={props.onViewDetail}
+              />
+              <Button
+                color={Color.primary}
+                title="To Cart"
+                onPress={props.onAddToCart}
+              />
+            </View>
+          </View>
+        </TouchableCmp>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
@@ -55,18 +67,19 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "60%",
     borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    overflow: "hidden"
+    borderTopRightRadius: 10
   },
   image: {
     width: "100%",
     height: "100%"
   },
   title: {
+    fontFamily: "open-sans-bold",
     fontSize: 18,
-    marginVertical: 4
+    marginVertical: 2
   },
   price: {
+    fontFamily: "open-sans",
     fontSize: 14,
     color: "#888"
   },
@@ -81,6 +94,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: "15%",
     padding: 10
+  },
+  touchable: {
+    overflow: "hidden",
+    borderRadius: 10
   }
 });
 
